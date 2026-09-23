@@ -1,0 +1,12 @@
+[mysqld]
+# Ejecutar el daemon bajo el usuario del sistema 'mysql'
+user = mysql
+
+# Definir el puerto estándar
+port = 3306
+
+# Escuchar en todas las interfaces de red (0.0.0.0) para aceptar conexiones de WordPress
+bind-address = 0.0.0.0
+
+# Asegurar que el soporte TCP/IP está activado
+skip-networking = false
