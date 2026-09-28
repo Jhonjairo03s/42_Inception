@@ -1,6 +1,5 @@
 #!/bin/sh
 
-
 if [ ! -f "/etc/nginx/ssl/certAutofirmado.crt" ]; 
 then
 	# https://nubelonia.com/crear-docker-nginx-con-alpine-autocertificado-ssl/
