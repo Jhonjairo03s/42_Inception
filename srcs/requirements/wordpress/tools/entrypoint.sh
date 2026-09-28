@@ -2,10 +2,19 @@
 
 mkdir -p /var/www/html && cd /var/www/html
 
+if [ ! -f "wp-settings.php" ];
+then
+	php85 -d memory_limit=512M /usr/local/bin/wp core download --allow-root
+fi
+
+sleep 10
+
 if [ ! -f "wp-config.php" ];
 then
 	# https://developer.wordpress.org/cli/commands/
-	/usr/local/bin/wp core download --allow-root
+	#php85 -d memory_limit=512M /usr/local/bin/wp core download --allow-root
+
+	#sleep 10
 
 	/usr/local/bin/wp config create --dbname=$MYSQL_DATABASE --dbuser=$MYSQL_USER --dbpass=$MYSQL_PASSWORD --dbhost=mariadb --allow-root
 

@@ -8,5 +8,9 @@ port = 3306
 # Escuchar en todas las interfaces de red (0.0.0.0) para aceptar conexiones de WordPress
 bind-address = 0.0.0.0
 
+# Anular cualquier restricción de escucha por IP que tenga Alpine por defecto
+skip-bind-address
+skip-name-resolve
+
 # Asegurar que el soporte TCP/IP está activado
-skip-networking = false
+#skip-networking = false

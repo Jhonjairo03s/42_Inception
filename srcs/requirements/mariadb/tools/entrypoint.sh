@@ -1,5 +1,8 @@
 #!/bin/sh
 
+mkdir -p /run/mysqld
+chown -R mysql:mysql /run/mysqld
+
 DATADIR="/var/lib/mysql/mysql"
 
 if [ ! -d $DATADIR ];

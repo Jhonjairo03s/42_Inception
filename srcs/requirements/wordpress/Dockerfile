@@ -3,6 +3,7 @@ FROM alpine:3.23
 RUN <<EOF
 apk update
 apk add --no-cache php85 php85-fpm php85-mysqli php85-phar php85-mbstring curl
+ln -s /usr/bin/php85 /usr/bin/php
 EOF
 
 # https://www.wp-cli.es/instalar/
