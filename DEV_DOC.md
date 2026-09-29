@@ -47,9 +47,6 @@ To manage and debug the infrastructure during development, use the following com
 - **Inspect network connectivity:** `sudo docker network inspect srcs_inception_net`
 
 ## Project Data and Persistence Strategy
-By default, Docker containers are ephemeral; any data written inside them is lost when the container is destroyed. To achieve data persistence, this project uses **Bind Mounts**.
-
-- **Database Data:** MariaDB's internal `/var/lib/mysql` directory is bound to the host machine at `/home/<login>/data/mariadb/`.
-- **Website Data:** WordPress's internal `/var/www/html` directory is bound to the host machine at `/home/<login>/data/wordpress/`.
+Instead of using direct bind mounts (which are strictly forbidden by the subject) or standard isolated volumes, the named volumes (`db_data` and `wp_data`) are configured using the `local` driver with specific `driver_opts`. This architecture forces Docker to map these named volumes directly to the host's physical directories (`/home/login/data/mariadb` and `/home/login/data/wordpress`). This guarantees that databases and website files persist across container rebuilds and host reboots, fulfilling all requirements.
 
 **How it persists:** Because these directories are physically located on the host's filesystem, stopping or removing the containers (`make clean`) does not affect the data. When the containers are rebuilt and restarted, they remount these host directories and instantly regain access to the previous state of the database and website files.
