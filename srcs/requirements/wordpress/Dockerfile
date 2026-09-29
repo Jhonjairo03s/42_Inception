@@ -2,7 +2,7 @@ FROM alpine:3.23
 
 RUN <<EOF
 apk update
-apk add --no-cache php85 php85-fpm php85-mysqli php85-phar php85-mbstring php85-redis curl
+apk add --no-cache php85 php85-fpm php85-mysqli php85-phar php85-mbstring php85-tokenizer php85-redis php85-ctype php85-session curl
 ln -s /usr/bin/php85 /usr/bin/php
 EOF
 
